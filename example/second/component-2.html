@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>component-2.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<script type="text/javascript" src="//at.alicdn.com/t/font_553318_wxbbww59wf6layvi.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+	<style type="text/css">
+		#holdme {
+			color : blue;
+			cursor : pointer;
+		}
+	</style>
+</head>
+<body>
+	<h1>component-2.html</h1>
+	<hr>
+	<div id="app">
+		<dog v-bind:here="message"></dog>
+		<div :id="youId">v-bind可以绑定任意属性</div>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "China anhua pojuoli"	,
+				youId: "holdme"
+			},
+			components: {
+				"dog" : {
+					template: `<div style="color:green;">dog from {{here}}</div>`,
+					props:['here']
+				}
+			}
+		});
+
+	</script>
+
+</body>
+</html>

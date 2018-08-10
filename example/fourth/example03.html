@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>example03.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>example03.html</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="app">
+		{{message}}
+		<p v-text="num"></p>
+        <p>
+            <button @click="add">增加</button>
+        </p>
+	</div>
+
+	<p>
+		<button onclick="reduce()">减少</button>
+	</p>
+
+	<p>
+		<button onclick="reduceOnce()">只减少一次</button>
+	</p>
+
+	<p>
+		<button onclick="off()">off</button>
+	</p>
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+				num: 1
+			},
+            methods: {
+                add : function() {
+                    this.num++;
+                }
+            }
+		});
+
+
+		// $on  在构造器外部添加事件, $on接收两个参数，第一个参数是调用时的事件名称，第二个参数是一个匿名方法。
+		app.$on('reduce', function() {
+			console.log('执行了reduce方法');
+			this.num--;
+		});
+
+       // $once执行一次的事件
+		app.$once('reduceOnce', function(){
+			console.log('app.$once方法，只执行一次');
+			this.num--;
+		});
+
+
+		function reduce() {
+			// 如果按钮在作用域外部，可以利用$emit来执行
+			app.$emit('reduce');
+		}
+
+		function reduceOnce() {
+			app.$emit('reduceOnce');
+		}
+
+		// $off关闭事件
+		function off() {
+			// 关闭了reduce事件
+			app.$off('reduce');
+		}
+
+	</script>
+
+</body>
+</html>

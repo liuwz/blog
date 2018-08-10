@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>example01.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<script type="text/javascript" src="../../assets/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>example01 methods demo 引入jquery,调用内部方法</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="app">
+		{{message}}
+		{{errorCode}}
+	</div>
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+				errorCode: "0"
+			},
+			mounted: function() {
+				$("#app").html('我是Jquery^_^！');
+			},
+			methods: {
+				add: function() {
+					console.log("调用内部的add方法");
+				}
+			}
+		});
+
+		app.add();
+
+	</script>
+
+</body>
+</html>

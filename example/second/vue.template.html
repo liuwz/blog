@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>vue.template 三种写法</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+<body>
+	<h1>vue.template 三种写法</h1>
+	<hr>
+	<div id="app">
+		{{message}}
+	</div>
+
+	<template id="dd2">
+		<h2 style="color:red;">我是template标签模板</h2>
+	</template>
+
+	<!-- 可以进行外部引用，也可以通过src引入 -->
+	<script type="x-template" id="dd3">
+		<h2 style="color:red;">我是Script标签模板</h2>
+	</script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+			},
+			template:"#dd3",
+			// template:`
+			// 	<h2 style="color:red;">我是选项模板</h2>
+			// `
+		});
+
+	</script>
+
+</body>
+</html>

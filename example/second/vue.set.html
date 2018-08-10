@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>vue.set 全局操作</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+<body>
+	<h1>vue.set 全局操作</h1>
+	<hr>
+	<div id="app">
+		{{count}}
+		<ul>
+			<li v-for="item in arr">{{item}}</li>
+		</ul>
+	</div>
+	<button onclick="change()">改变</button>
+
+	<script type="text/javascript">
+		function change() {
+			//Vue.set(outData, "count", 19);
+			//app.count++;
+			//outData.count++;
+			//
+			//这种情况，只要dom不改变，那么就无法通过数组下标去改变数组的值，这是javascript的限制	
+			//app.arr[1] = "dd";
+			//
+			//可以通过Vue.set去实现
+			Vue.set(app.arr, 1, "dd");
+		}
+		var outData = {
+			"count": 18,
+			"goods": "car",
+			"arr" : ["aaa", "bbb", "ccc"]
+		}
+		var app = new Vue({
+			el:'#app',
+			data:outData
+		});
+
+	</script>
+
+</body>
+</html>

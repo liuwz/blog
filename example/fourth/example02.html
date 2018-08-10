@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>example02.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<script type="text/javascript" src="../../assets/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>example02 methods demo</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="liuwj">
+
+	</div>
+
+	<p>
+		<!-- 两种销毁方式 -->
+		<button onclick="vm.$destroy()">销毁按钮1</button>
+		<button onclick="destroy()">销毁按钮2</button>
+	</p>
+
+	<p>
+		<button onclick="reload()">刷新</button>
+	</p>
+
+	<p>
+		<button onclick="tick()">更改数据</button>
+	</p>
+	<p>
+		<button onclick="vm.testModifyMessage()">test</button>
+	</p>
+	<script type="text/javascript">
+
+		var liuwj = Vue.extend({
+			template: "<p>{{message}}</p>",
+			data: function() {
+				return {
+					message: "I'm liuwj"
+				};
+			},
+			mounted: function() {
+				console.log("mounted 在这里被创建");
+			},
+			destroyed: function() {
+				console.log("destroyed生命周期函数：销毁之后执行");
+			},
+			updated: function() {
+				console.log("updated生命周期函数：更新之后执行" + new Date());
+			},
+			methods: {
+				testModifyMessage: function() {
+					this.message = "i become to liuwenzhao";
+				}
+			}
+		});
+
+
+		console.log("将要挂载");
+		// $mount() 挂载方法
+		var vm = new liuwj().$mount("#liuwj");
+		console.log("挂载成功");
+
+		// $destroy()绑定销毁方法
+		function destroy() {
+			vm.$destroy();
+		}
+
+		// $forceUpdate()更新方法
+		function reload() {
+			vm.$forceUpdate();
+		}
+
+		// $nextTick() 数据修改方法
+		function tick(){
+		    vm.message = "update message info";
+		    vm.$nextTick(function(){
+		        console.log('message更新完后我被调用了');
+		    })
+		}
+	</script>
+
+</body>
+</html>

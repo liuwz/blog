@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>v-bind.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+	<style type="text/css">
+		.classAA{
+			color: red;
+		}
+		.classBB{
+			font-size:150%;
+		}
+	</style>
+<body>
+	<h1>v-bind.html</h1>
+	<hr>
+	<div id="app">
+		<p><img v-bind:src="imgSrc"></p>
+		<!-- :为缩写 -->
+		<p><a :href="webUrl" target="_blank">百度一下你就知道</a></p>
+		<hr>
+		<div :class="className">1、v-bind绑定class</div>
+		<div :class="{classAA:isOk}">2、v-bind绑定class中的判断</div>
+		<div :class="[classA, classB]">3、v-bind绑定class中的数组</div>
+		<div :class="isOk?classA:classB">4、v-bind绑定class中的三元运算符</div>
+		<hr>
+		<div>
+			<input type="checkbox" id="pd" v-model="isOk"/>
+			<label for="pd">isOk={{isOk}}</label>
+		</div>
+		<hr>
+		<!-- vue的一个坑：font-size要写成fontSize,这种有杠的直接去掉然后大写 -->
+		<div :style="{color:myGray, fontSize:mysize}">5、v-bind绑定style</div>
+		<div :style="styleObject">6、对象v-bind绑定到style</div>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				imgSrc: "http://imga1.5054399.com/upload_pic/2018/1/19/4399_13562078175.jpg",
+				webUrl: "http://www.baidu.com",
+				className: "classAA",
+				classA:"classAA",
+				classB:"classBB",
+				isOk: true,
+				myGray:"gray",
+				mysize:"20px",
+				styleObject: {
+					"color": "green",
+					"fontSize": "24px"
+				}
+			}
+		});
+
+	</script>
+
+</body>
+</html>

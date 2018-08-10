@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>v-on.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+<body>
+	<h1>v-on.html 计分器</h1>
+	<hr>
+	<div id="app">
+		本场比赛得分， {{score}}
+		<p>
+			<button v-on:click="addScore">加分</button>
+			<!-- 简写写法@ -->
+			<button @click="reduceScore">减分</button>
+			<!-- 可以用键盘码，13是enter的键盘码 -->
+			<input type="text" name="" v-on:keyup.Enter="onEnter" v-model="score2">
+		</p>
+	</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				score: 0,
+				score2: 1
+			},
+			methods:{
+				addScore: function() {
+					this.score++;
+				},
+				reduceScore:function() {
+					this.score--;
+				},
+				onEnter: function() {
+					this.score = this.score + Number(this.score2);
+				}
+			}
+		});
+
+	</script>
+
+</body>
+</html>

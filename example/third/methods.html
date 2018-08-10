@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>methods option</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+<body>
+	<h1>methods option</h1>
+	<hr>
+	<div id="app">
+		{{num}}
+		<p>
+			<button @click="add(2, $event)">增加</button>
+		</p>
+		<p>
+			<mybtn @click.native="add(2, $event)">这里写字没有用，会被template覆盖</mybtn>
+		</p>
+	</div>
+
+	<p>
+		<button onclick="app.add2(3)">外部增加</button>
+	</p>
+	<script type="text/javascript">
+		var btnComponent = {
+			template: `<button>组件增加</button>`
+		};
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+				num: 0
+			},
+			components: {
+				mybtn: btnComponent
+			},
+			methods: {
+				add: function(x, event) {
+					console.log(event);
+					if (x) {
+						this.num += x;
+					} else {
+						this.num++;
+					}
+				},
+				add2: function(x) {
+					if (x) {
+						this.num += x;
+					} else {
+						this.num++;
+					}
+				}
+			}
+		});
+
+	</script>
+
+</body>
+</html>

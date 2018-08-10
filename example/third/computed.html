@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>computed option</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>computed option</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="app">
+		<p>{{newPrice}} + {{price}}</p>
+		<ul>
+			<li v-for="item in getNewsList">{{item.title}}   {{item.date}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var newsList = [
+			{title: "这是世界军队后勤史上新一页：中国用快递公司无人机送货", date: "2018/1/25"},
+			{title:"央视特意曝光一撒手锏，歼20装上后如虎添翼，战力让F-22望尘莫及", date: "2018/1/26"},
+			{title:"中印两国加强战机部署，美智库做预测：洞朗地区或爆发新冲突", date: "2018/1/27"},
+			{title:"振奋！中国将成为继美国之后第二个装备两种五代机的国家", date: "2018/1/28"}
+		];
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+				errorCode: "0",
+				price: 10000,
+				news: newsList
+			},
+			computed: {
+				newPrice: function() {
+					return "￥" + this.price + "圆";
+				},
+				getNewsList: function() {
+					return this.news.reverse();
+				}
+			}
+		});
+
+	</script>
+
+</body>
+</html>

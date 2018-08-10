@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>vue.extend 扩展实例构造器</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+</head>
+<body>
+	<h1>vue.extend 扩展实例构造器</h1>
+	<hr>
+	<!-- 第一种 -->
+	<author></author>
+
+	<!-- 第二种：推荐写法 -->
+	<div id="author"></div>
+	<script type="text/javascript">
+		var authorDemo = Vue.extend({
+			template: "<p><a :href='authorURL' v-text='authorName'></a></p>",
+			data: function() {
+				return{
+					"authorName": "刘文钊",
+					"authorURL": "https://www.imooc.com/learn/856"
+				};
+			}
+		});
+		new authorDemo().$mount("author");
+		new authorDemo().$mount("#author");
+	</script>
+
+</body>
+</html>

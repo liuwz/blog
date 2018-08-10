@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>helloworld.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>HelloWorld.html</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="app">
+		{{message}}
+		{{errorCode}}
+	</div>
+	<script type="text/javascript">
+
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message: "hello world!"	,
+				errorCode: "0"
+			}
+		});
+
+	</script>
+
+</body>
+</html>

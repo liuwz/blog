@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>helloworld.html</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="../../assets/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../../assets/font-css/iconfont.css">
+</head>
+<body>
+	<h1>HelloWorld.html</h1>
+	<i class="iconfont icon-del"></i>
+	<hr>
+	<div id="app">
+		<liuwj>
+			<a slot="blogUrl" style="color:red" :href="blog.blogUrl">{{blog.blogUrl}}</a>
+			<span slot="netName" style="color:purple">哈哈{{blog.netName}}</span>
+			<span slot="skill" style="color:palegreen">{{blog.skill}}</span>
+		</liuwj>
+	</div>
+
+	<template id="tep">
+		<div>
+			<p>博客地址：<slot name="blogUrl"></slot></p>
+			<p>作者名称：<slot name="netName"></slot></p>
+			<p>技能类型：<slot name="skill"></slot></p>
+		</div>
+	</template>
+
+
+	<script type="text/javascript">
+		var myComponet = {
+			template:"#tep"
+		}
+		var app = new Vue({
+			el:'#app',
+			data:{
+				blog: {
+					blogUrl:"http://blog.csdn.net/wearefamulei",
+					netName:"刘文钊",
+					skill:"Java Web"
+				}
+			},
+			components: {
+				"liuwj": myComponet
+			}
+		});
+
+	</script>
+
+</body>
+</html>
